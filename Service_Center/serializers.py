@@ -50,6 +50,11 @@ class DeviceSerializers(serializers.ModelSerializer):
         stock.save()
         return stock
     
+class UpdateSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Device
+        fields = ['user_damage','user_damage_comment','amount','taken_by','taken_date','issue','service_center_feedback','status']
+    
 class GetDeviceSerializers(serializers.ModelSerializer):
     device = StockSerializers(read_only=True)
     comment = CommentSeriailizer(many=True)
