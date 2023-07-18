@@ -39,7 +39,9 @@ class service:
         data = {}
         
         serviceCenter = Service_Center.objects.prefetch_related('devices').get(id=serviceId)
-        device = Stock.objects.select_related('service_center_feedback').get(imei=imei)
+        device = Stock.objects.get(imei=imei)
+        new_device = Device.objects.create()
+        new_device.device = device
         serviceCenter.devices.add(device)
         serviceCenter.save()
         data = f"New Device {device.product} added to {serviceCenter.service_center_name}"

@@ -6,4 +6,6 @@ urlpatterns = [
     path("SingleSale/<int:id>",sales.SaleClass.singleSales,name="sale"),
     path("newSale",sales.SaleClass.newSale,name="new"),
     path("editSale/<int:id>",sales.SaleClass.editSale,name="update"),
+    path("AllSalesAtShop",sales.SaleClass.allSalesAtShop,name="allAtShop"),
+    path("AllSalesClients",sales.SaleClass.allSalesClients,name="allClients"),
 ]

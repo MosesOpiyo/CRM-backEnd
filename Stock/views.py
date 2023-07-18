@@ -61,3 +61,12 @@ class stockClass:
         stock = Stock.objects.get(id=id)
         data = GetStockSerializer(stock).data
         return Response(data,status=status.HTTP_200_OK)
+    
+    @api_view(["GET"])
+    @permission_classes([IsAuthenticated])
+    def allStockValue(request):
+        data = {}
+        
+        stock = Stock.objects.all()
+        data = GetStockSerializer(stock,many=True).data
+        return Response(data,status=status.HTTP_200_OK)

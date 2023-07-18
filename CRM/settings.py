@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'Authentication',
     'Sales',
     'Stock',
-    'Service_Center'
+    'Service_Center',
+    'Invoice'
     
 ]
 

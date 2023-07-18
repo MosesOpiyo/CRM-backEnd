@@ -70,6 +70,28 @@ class SaleClass:
     
     @api_view(["GET"])
     @permission_classes([IsAuthenticated])
+    def allSalesAtShop(request):
+        data = {}
+        sales = Sale.objects.filter(status='At The Shop')
+        data = GetSaleSerializers(sales,many=True).data
+        return Response(data,status=status.HTTP_200_OK)
+    
+    @api_view(["GET"])
+    @permission_classes([IsAuthenticated])
+    def allSalesClients(request):
+        data = {}
+        clients = []
+        sales = Sale.objects.all()
+        for sale in sales:
+            if sale.client_name not in clients:
+                clients.append(sale.client_name)
+        data = clients
+        print(clients)
+        return Response(data,status=status.HTTP_200_OK)
+    
+    
+    @api_view(["GET"])
+    @permission_classes([IsAuthenticated])
     def singleSales(request,id):
         data = {}
         sales = Sale.objects.get(id=id)
